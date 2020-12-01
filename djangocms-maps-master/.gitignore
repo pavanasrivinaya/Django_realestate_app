@@ -1,0 +1,9 @@
+.tox
+*.log
+*.pot
+*.pyc
+*.idea
+local_settings.py
+build
+dist
+djangocms_maps.egg-info

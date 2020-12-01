@@ -1,0 +1,31 @@
+dist: xenial
+language: python
+python:
+  - 3.5
+  - 3.6
+  - 3.7
+  - 3.8
+
+env:
+  - TOXENV=flake8
+  - TOXENV=pylint
+matrix:
+  include:
+    - { python: 3.7, env: TOXENV=bandit }
+    - { python: 3.8, env: TOXENV=jshint }
+    - { python: 3.8, env: TOXENV=readme }
+
+install:
+  - pip install tox-travis
+script:
+  - tox
+
+deploy:
+  provider: pypi
+  user: bittner
+  password:
+    secure: NM8NLOlIx6ADQ9WjM4w34m3SJ8OzT2ndGi913xVZLTkGbOTGA5D6GCNIRTEBToKN2aqkqK7zQP44M1UTr77+d7Lq4wuwR09gHrvLpUpipvhlQmAY1MRKQuKq503zUT1IF/OcBMimvbwFwVG3eDvteCUwWuNW96k4hDVDihecRAu1EZtyMr6QgOQzrpD3mweGpJfl3aUZXbx5lit94YP83XeNWCPQ2ktx1XnYTx5pcXK+tKRvOE/VEDdD0m5dZjWylkbNUxnhhhpvSsdvPiU+iFRPeEs7soI86pPIxk3l232cbAhNKV300eO1rjT+FL5UcMdIeAK9hWITtDQXjGCqsTsxgXeVKp4TBjzUEcZRPNG1a3E/TcCDuDCu9zBx9U0AY56erN9tVDA7XTm5YjkDnkBjbr/mUKQni5kwovKeuv7h089tROLUgYtYGCogzBwPUwzcTna0m3NSdhUiJmndeS6tNmLGs9J2lHXsexBc+Tx+Ab/JPrXqesneQGi6snQ+AUY3w81zOl21/oOLMx5m0a6iMFzyB8SpfapUSPRpSxAFjTtmpp8PUuAUovzcRB8lZWsaQt5Gzrn+pCauYO9n9+lqWTtxbT39j7hwXLdcO8HcuQzKVLyEXtUzMn3Gb1XfnMaEVtDNrwlXe6zil0cVMh3LQVTIdqfVhWf+vBAzs+A=
+  on:
+    tags: true
+  distributions: sdist bdist_wheel
+  skip_existing: true

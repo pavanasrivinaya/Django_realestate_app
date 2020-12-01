@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[django-cms.djangocms-maps]
+file_filter = djangocms_maps/locale/<lang>/LC_MESSAGES/django.po
+source_file = djangocms_maps/locale/en/LC_MESSAGES/django.po
+source_lang = en
+type = PO
